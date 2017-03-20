@@ -1,5 +1,6 @@
+<div class="forminside">
 <h2>Sign up here for nothing...You will get nothing of it!</h2>
-<form class="form-horizontal" role="form"
+<form class="form-horizontal regisform" role="form"
 action="/process?form=regis" method="POST">
 <input type="hidden" name="_csrf" value="{{csrf}}">
 <div class="form-group">
@@ -22,3 +23,39 @@ id="fieldName" name="email">
 </div>
 </div>
 </form>
+</div>
+
+<script>
+$(document).ready(function()
+{
+console.log('Here reaching...');
+ 
+	$('.regisform').on('submit',function(evt)
+	{
+    console.log('Here form submitted');
+	  evt.preventDefault();
+	  var action=$(this).attr('action');
+      var $container=$(this).closest('.forminside');
+      $.ajax({
+       url:action,
+       type:'POST',
+       success:function(data)
+       {
+       if(data.success)
+       {
+       $container.html('<h2>Thank You</h2>');
+
+       }
+       else
+        {
+        $container.html('There was a problem');
+        }
+       },
+       error:function()
+       {
+       $container.html('There was a problem');
+       }
+      });
+	});
+});
+</script>

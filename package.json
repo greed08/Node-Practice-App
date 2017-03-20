@@ -10,6 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.17.1",
-    "express3-handlebars": "^0.5.2"
+    "express3-handlebars": "^0.5.2",
+    "formidable": "^1.1.1",
+    "mongoose": "^4.9.1"
   }
 }
